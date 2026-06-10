@@ -88,10 +88,11 @@
     <span>Elgasco GmbH</span>
   </a>
   <ul class="nav-links">
-    <li><a href="index.html#categories">Produkte</a></li>
-    <li><a href="catalog.html" class="active">Katalog</a></li>
-    <li><a href="index.html#about">Über uns</a></li>
-    <li><a href="index.html#contact" class="btn-primary">Kontakt</a></li>
+    <li><a href="index.html#categories" data-i18n="nav_products">Produkte</a></li>
+    <li><a href="catalog.html" class="active" data-i18n="nav_catalog">Katalog</a></li>
+    <li><a href="index.html#about" data-i18n="nav_about">Über uns</a></li>
+    <li><a href="index.html#contact" class="btn-primary" data-i18n="nav_contact">Kontakt</a></li>
+    <li><button class="lang-btn" onclick="toggleLang()" title="Switch language">EN</button></li>
   </ul>
   <button class="nav-toggle" aria-label="Menü öffnen">
     <span></span><span></span><span></span>
@@ -100,11 +101,9 @@
 
 <!-- HERO -->
 <div class="catalog-hero">
-  <div class="hero-badge" style="display:inline-flex;margin-bottom:20px;">
-    500+ Artikel · 16 Kategorien
-  </div>
-  <h1>Produktkatalog</h1>
-  <p>Alle Komponenten für die Haushaltsgeräteproduktion – durchsuchbar, filterbar, direkt anfragbar.</p>
+  <div class="hero-badge" style="display:inline-flex;margin-bottom:20px;" data-i18n="catalog_badge">500+ Artikel · 16 Kategorien</div>
+  <h1 data-i18n="catalog_h1">Produktkatalog</h1>
+  <p data-i18n="catalog_p">Alle Komponenten für die Haushaltsgeräteproduktion – durchsuchbar, filterbar, direkt anfragbar.</p>
 </div>
 
 <!-- Mobile category tabs -->
@@ -116,17 +115,17 @@
 
     <!-- Sidebar -->
     <aside class="catalog-sidebar">
-      <div class="sidebar-title">Kategorien</div>
+      <div class="sidebar-title" data-i18n="catalog_sidebar_title">Kategorien</div>
       <div class="sidebar-filter" id="sidebarFilter"></div>
     </aside>
 
     <!-- Main content -->
     <div>
       <div class="catalog-search">
-        <input type="text" id="searchInput" placeholder="Suche nach Produkt, Teilenummer oder Beschreibung..." />
+        <input type="text" id="searchInput" data-i18n-ph="catalog_search_ph" placeholder="Suche nach Produkt, Teilenummer oder Beschreibung..." />
         <button onclick="clearSearch()">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-          Suchen
+          <span data-i18n="catalog_search_btn">Suchen</span>
         </button>
       </div>
 
@@ -152,9 +151,9 @@
         <div class="modal-actions">
           <a href="index.html#contact" class="btn btn-primary">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
-            Anfrage für dieses Produkt
+            <span data-i18n="catalog_modal_inquiry">Anfrage für dieses Produkt</span>
           </a>
-          <button class="btn btn-outline" style="color:var(--navy);border-color:var(--gray-mid);" onclick="closeModalBtn()">Schließen</button>
+          <button class="btn btn-outline" style="color:var(--navy);border-color:var(--gray-mid);" onclick="closeModalBtn()" data-i18n="catalog_modal_close">Schließen</button>
         </div>
       </div>
     </div>
@@ -306,12 +305,27 @@ function init() {
   });
 }
 
+function getCatLabel(catId) {
+  const lang = typeof currentLang !== 'undefined' ? currentLang : 'de';
+  return (CAT_LABELS[lang] && CAT_LABELS[lang][catId]) || catId;
+}
+
+function getProductName(p) {
+  const lang = typeof currentLang !== 'undefined' ? currentLang : 'de';
+  return (PRODUCT_TRANSLATIONS[lang] && PRODUCT_TRANSLATIONS[lang][p.id]?.name) || p.name;
+}
+
+function getProductDesc(p) {
+  const lang = typeof currentLang !== 'undefined' ? currentLang : 'de';
+  return (PRODUCT_TRANSLATIONS[lang] && PRODUCT_TRANSLATIONS[lang][p.id]?.desc) || p.desc;
+}
+
 function renderSidebar() {
   const container = document.getElementById('sidebarFilter');
   container.innerHTML = CATEGORIES.map(cat => {
     const count = cat.id === 'all' ? PRODUCTS.length : PRODUCTS.filter(p => p.cat === cat.id).length;
     return `<button onclick="setCategory('${cat.id}')" class="${activeCategory === cat.id ? 'active' : ''}" id="btn-${cat.id}">
-      ${cat.label}
+      ${getCatLabel(cat.id)}
       <span class="count">${count}</span>
     </button>`;
   }).join('');
@@ -321,9 +335,15 @@ function renderMobileTabs() {
   const container = document.getElementById('catTabs');
   container.innerHTML = CATEGORIES.map(cat => `
     <button class="cat-tab ${activeCategory === cat.id ? 'active' : ''}" onclick="setCategory('${cat.id}')">
-      ${cat.label}
+      ${getCatLabel(cat.id)}
     </button>
   `).join('');
+}
+
+function onLangChange() {
+  renderSidebar();
+  renderMobileTabs();
+  renderProducts();
 }
 
 function setCategory(catId) {
@@ -358,12 +378,12 @@ function renderProducts() {
 
   const grid = document.getElementById('productsGrid');
   const count = document.getElementById('resultsCount');
-  count.innerHTML = `<strong>${filtered.length}</strong> Produkt${filtered.length !== 1 ? 'e' : ''} gefunden`;
+  const lang = typeof currentLang !== 'undefined' ? currentLang : 'de';
+  const prodWord = lang === 'en' ? (filtered.length !== 1 ? 'products' : 'product') : `Produkt${filtered.length !== 1 ? 'e' : ''}`;
+  count.innerHTML = `<strong>${filtered.length}</strong> ${prodWord} ${lang === 'en' ? 'found' : 'gefunden'}`;
 
   if (filtered.length === 0) {
-    grid.innerHTML = `<div class="no-results">
-      <p>Keine Produkte gefunden. Bitte ändern Sie Ihre Suche.</p>
-    </div>`;
+    grid.innerHTML = `<div class="no-results"><p>${t('catalog_no_results')}</p></div>`;
     return;
   }
 
@@ -371,13 +391,13 @@ function renderProducts() {
     const cat = CATEGORIES.find(c => c.id === p.cat);
     return `<div class="product-card" onclick="openModal(${p.id})">
       <div class="product-img">
-        <img src="assets/images/${p.img}" alt="${p.name}" loading="lazy"
+        <img src="assets/images/${p.img}" alt="${getProductName(p)}" loading="lazy"
              onerror="this.style.display='none'"/>
       </div>
       <div class="product-body">
-        <div class="product-cat">${cat ? cat.label : ''}</div>
-        <h4>${p.name}</h4>
-        <p>${p.desc}</p>
+        <div class="product-cat">${getCatLabel(cat?.id || '')}</div>
+        <h4>${getProductName(p)}</h4>
+        <p>${getProductDesc(p)}</p>
         <div class="product-part">
           <strong>${p.partNo}</strong><br/>
           <span style="opacity:.7">${p.mfrPart}</span>
@@ -392,16 +412,17 @@ function openModal(productId) {
   if (!p) return;
   const cat = CATEGORIES.find(c => c.id === p.cat);
 
-  document.getElementById('modalCat').textContent = (cat ? cat.label : '');
-  document.getElementById('modalTitle').textContent = p.name;
-  document.getElementById('modalImg').innerHTML = `<img src="assets/images/${p.img}" alt="${p.name}" onerror="this.parentNode.innerHTML=''"/>`;
+  const pName = getProductName(p);
+  document.getElementById('modalCat').textContent = getCatLabel(cat?.id || '');
+  document.getElementById('modalTitle').textContent = pName;
+  document.getElementById('modalImg').innerHTML = `<img src="assets/images/${p.img}" alt="${pName}" onerror="this.parentNode.innerHTML=''"/>`;
 
   const specs = [
-    { label: 'ELG Teilenr.', value: p.partNo },
-    { label: 'Hersteller-Nr.', value: p.mfrPart },
-    p.power !== '—' ? { label: 'Leistung', value: p.power } : null,
-    p.voltage !== '—' ? { label: 'Spannung', value: p.voltage } : null,
-    p.packQty ? { label: 'VPE', value: p.packQty + ' Stück' } : null,
+    { label: t('spec_elg'), value: p.partNo },
+    { label: t('spec_mfr'), value: p.mfrPart },
+    p.power !== '—' ? { label: t('spec_power'), value: p.power } : null,
+    p.voltage !== '—' ? { label: t('spec_voltage'), value: p.voltage } : null,
+    p.packQty ? { label: t('spec_pack'), value: p.packQty + ' ' + t('spec_unit') } : null,
   ].filter(Boolean);
 
   document.getElementById('modalSpecs').innerHTML = specs.map(s =>
@@ -423,5 +444,7 @@ document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModalBt
 
 init();
 </script>
+<script src="assets/js/i18n.js"></script>
+<script src="assets/js/main.js"></script>
 </body>
 </html>

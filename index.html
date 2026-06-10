@@ -4,11 +4,11 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Elgasco GmbH – Ihr Partner für Haushaltsgeräte-Komponenten</title>
-  <meta name="description" content="Elgasco GmbH – seit 25 Jahren zuverlässiger Lieferant von Komponenten für russische und weißrussische Hersteller weißer Haushaltsgeräte. Kochfelder, Heizelemente, Regler, Ventilatoren und mehr." />
-  <meta name="keywords" content="Elgasco, Haushaltsgeräte Komponenten, Heizelemente, Kochfelder, Backofen Ersatzteile, Gusseisenroste, Thermostate, Regler, Russland Weißrussland" />
+  <meta name="description" content="Elgasco GmbH – seit 25 Jahren zuverlässiger Lieferant von Komponenten für Hersteller weißer Haushaltsgeräte weltweit." />
+  <meta name="keywords" content="Elgasco, Haushaltsgeräte Komponenten, Heizelemente, Kochfelder, Backofen Ersatzteile, Gusseisenroste, Thermostate, Regler, white goods components" />
   <meta name="robots" content="index, follow" />
-  <meta property="og:title" content="Elgasco GmbH – Ihr Komponenten-Partner" />
-  <meta property="og:description" content="25 Jahre Erfahrung als Lieferant für die Haushaltsgeräteindustrie in Russland und Weißrussland." />
+  <meta property="og:title" content="Elgasco GmbH – Component Partner" />
+  <meta property="og:description" content="25 years of experience supplying components for the household appliance industry worldwide." />
   <meta property="og:image" content="assets/images/logo.svg" />
   <meta property="og:type" content="website" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -16,410 +16,344 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="assets/css/style.css" />
   <link rel="icon" type="image/png" href="assets/images/logo.svg" />
-
-  <!-- Schema.org structured data -->
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "Elgasco GmbH",
-    "description": "Lieferant von Komponenten für Hersteller weißer Haushaltsgeräte",
-    "foundingDate": "1999",
-    "areaServed": ["RU", "BY", "DE"],
-    "knowsAbout": ["Haushaltsgeräte", "Kochfelder", "Heizelemente", "Backofen Komponenten"]
-  }
+  {"@context":"https://schema.org","@type":"Organization","name":"Elgasco GmbH","description":"Supplier of components for white goods manufacturers","foundingDate":"1999","areaServed":"Worldwide","knowsAbout":["Haushaltsgeräte","Kochfelder","Heizelemente","Backofen Komponenten"]}
   </script>
 </head>
 <body>
 
-<!-- ===== NAVBAR ===== -->
 <nav class="navbar">
   <a href="index.html" class="nav-logo">
     <img src="assets/images/logo.svg" alt="Elgasco GmbH Logo" />
     <span>Elgasco GmbH</span>
   </a>
   <ul class="nav-links">
-    <li><a href="#categories">Produkte</a></li>
-    <li><a href="catalog.html">Katalog</a></li>
-    <li><a href="#about">Über uns</a></li>
-    <li><a href="#contact" class="btn-primary">Kontakt</a></li>
+    <li><a href="#categories" data-i18n="nav_products">Produkte</a></li>
+    <li><a href="catalog.html" data-i18n="nav_catalog">Katalog</a></li>
+    <li><a href="#about" data-i18n="nav_about">Über uns</a></li>
+    <li><a href="#contact" class="btn-primary" data-i18n="nav_contact">Kontakt</a></li>
+    <li><button class="lang-btn" onclick="toggleLang()" title="Switch language">EN</button></li>
   </ul>
   <button class="nav-toggle" aria-label="Menü öffnen">
     <span></span><span></span><span></span>
   </button>
 </nav>
 
-<!-- ===== HERO ===== -->
 <section class="hero" id="home">
   <div class="hero-bg-glow"></div>
   <div class="hero-content">
-    <div class="hero-badge">Seit 1999 · 25 Jahre Erfahrung</div>
-    <h1>Ihr zuverlässiger Partner für <span>Haushaltsgeräte-Komponenten</span></h1>
-    <p>Elgasco GmbH beliefert führende Produktionsunternehmen in Russland und Weißrussland mit hochwertigen Komponenten für weiße Haushaltsgeräte – präzise, termintreu und in industrieller Stückzahl.</p>
+    <div class="hero-badge" data-i18n="hero_badge">Seit 1999 · 25 Jahre Erfahrung</div>
+    <h1 data-i18n-html="hero_h1">Ihr zuverlässiger Partner für <span>Haushaltsgeräte-Komponenten</span></h1>
+    <p data-i18n="hero_p">Elgasco GmbH beliefert Produktionsunternehmen weltweit mit hochwertigen Komponenten für weiße Haushaltsgeräte – präzise, termintreu und in industrieller Stückzahl.</p>
     <div class="hero-buttons">
       <a href="catalog.html" class="btn btn-primary">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
-        Produktkatalog öffnen
+        <span data-i18n="hero_btn_catalog">Produktkatalog öffnen</span>
       </a>
       <a href="#contact" class="btn btn-outline">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
-        Anfrage senden
+        <span data-i18n="hero_btn_contact">Anfrage senden</span>
       </a>
     </div>
   </div>
   <div class="hero-visual" aria-hidden="true">
     <div class="hero-card">
-      <h3>Gusseisen-Kochfelder</h3>
-      <p>Schnellheizend & Standard</p>
+      <h3 data-i18n="hero_card1_h">Gusseisen-Kochfelder</h3>
+      <p data-i18n="hero_card1_p">Schnellheizend & Standard</p>
     </div>
     <div class="hero-card">
-      <h3>Heizelemente</h3>
-      <p>TEN / Tubular</p>
+      <h3 data-i18n="hero_card2_h">Heizelemente</h3>
+      <p data-i18n="hero_card2_p">TEN / Tubular</p>
     </div>
     <div class="hero-card">
-      <h3>Ventilatoren</h3>
-      <p>Axial & Tangential</p>
+      <h3 data-i18n="hero_card3_h">Ventilatoren</h3>
+      <p data-i18n="hero_card3_p">Axial & Tangential</p>
     </div>
     <div class="hero-card">
-      <h3>Schalter & Regler</h3>
-      <p>Rotary & Thermostate</p>
+      <h3 data-i18n="hero_card4_h">Schalter & Regler</h3>
+      <p data-i18n="hero_card4_p">Rotary & Thermostate</p>
     </div>
   </div>
 </section>
 
-<!-- ===== STATS ===== -->
 <div class="stats">
   <div class="stats-grid">
     <div class="stat-item fade-up">
       <div class="stat-number" data-target="25" data-suffix="+">0+</div>
-      <div class="stat-label">Jahre Erfahrung</div>
+      <div class="stat-label" data-i18n="stat1">Jahre Erfahrung</div>
     </div>
     <div class="stat-item fade-up">
       <div class="stat-number" data-target="16" data-suffix="">0</div>
-      <div class="stat-label">Produktkategorien</div>
+      <div class="stat-label" data-i18n="stat2">Produktkategorien</div>
     </div>
     <div class="stat-item fade-up">
       <div class="stat-number" data-target="500" data-suffix="+">0+</div>
-      <div class="stat-label">Artikel im Katalog</div>
+      <div class="stat-label" data-i18n="stat3">Artikel im Katalog</div>
     </div>
   </div>
 </div>
 
-<!-- ===== PRODUCT CATEGORIES ===== -->
 <section class="categories" id="categories">
   <div class="section-header">
-    <span class="section-tag">Produktkatalog</span>
-    <h2>Unsere Produktkategorien</h2>
-    <p>Von Heizelementen bis Zündsystemen – wir liefern alle Komponenten aus einer Hand für die industrielle Serienproduktion.</p>
+    <span class="section-tag" data-i18n="cat_tag">Produktkatalog</span>
+    <h2 data-i18n="cat_h2">Unsere Produktkategorien</h2>
+    <p data-i18n="cat_p">Von Heizelementen bis Zündsystemen – wir liefern alle Komponenten aus einer Hand für die industrielle Serienproduktion.</p>
   </div>
   <div class="categories-grid">
 
     <a href="catalog.html?cat=burners" class="category-card fade-up">
-      <div class="category-img">
-        <img src="assets/images/CastIronHotplate_nobg.png" alt="Gusseisen-Kochfelder" loading="lazy" />
-      </div>
+      <div class="category-img"><img src="assets/images/CastIronHotplate_nobg.png" alt="Cast Iron Hotplates" loading="lazy" /></div>
       <div class="category-body">
-        <h3>Gusseisen-Kochfelder</h3>
-        <p>Standard- und Schnellheizkochfelder für Elektroherdsysteme</p>
+        <h3 data-i18n="cat1_h">Gusseisen-Kochfelder</h3>
+        <p data-i18n="cat1_p">Standard- und Schnellheizkochfelder für Elektroherdsysteme</p>
         <span class="cat-count">CBS / CBR</span>
       </div>
     </a>
 
     <a href="catalog.html?cat=ten" class="category-card fade-up">
-      <div class="category-img">
-        <img src="assets/images/Tubular Heating Element 1_nobg.png" alt="Rohrheizkörper TEN" loading="lazy" />
-      </div>
+      <div class="category-img"><img src="assets/images/Tubular Heating Element 1_nobg.png" alt="Tubular Heating Elements" loading="lazy" /></div>
       <div class="category-body">
-        <h3>Rohrheizkörper (TEN)</h3>
-        <p>Tubulare Heizelemente in diversen Ausführungen für Backöfen und Kochfelder</p>
+        <h3 data-i18n="cat2_h">Rohrheizkörper (TEN)</h3>
+        <p data-i18n="cat2_p">Tubulare Heizelemente in diversen Ausführungen für Backöfen und Kochfelder</p>
         <span class="cat-count">THK / THL / THP / THS</span>
       </div>
     </a>
 
     <a href="catalog.html?cat=radiant" class="category-card fade-up">
-      <div class="category-img">
-        <img src="assets/images/Radiant Heating Element_1_nobg.png" alt="Strahlungsheizelemente" loading="lazy" />
-      </div>
+      <div class="category-img"><img src="assets/images/Radiant Heating Element_1_nobg.png" alt="Radiant Heating Elements" loading="lazy" /></div>
       <div class="category-body">
-        <h3>Strahlungs­heizelemente</h3>
-        <p>Glaskeramik-Heizelemente für Induktions- und Glaskeramikkochfelder</p>
+        <h3 data-i18n="cat3_h">Strahlungs­heizelemente</h3>
+        <p data-i18n="cat3_p">Glaskeramik-Heizelemente für Induktions- und Glaskeramikkochfelder</p>
         <span class="cat-count">CKH / CKG</span>
       </div>
     </a>
 
     <a href="catalog.html?cat=grates" class="category-card fade-up">
-      <div class="category-img">
-        <img src="assets/images/Cast Iron Grid_1_nobg.png" alt="Gusseisenroste" loading="lazy" />
-      </div>
+      <div class="category-img"><img src="assets/images/Cast Iron Grid_1_nobg.png" alt="Cast Iron Grates" loading="lazy" /></div>
       <div class="category-body">
-        <h3>Gusseisenroste</h3>
-        <p>Robuste Gusseisenroste für Gas- und Elektroherde</p>
+        <h3 data-i18n="cat4_h">Gusseisenroste</h3>
+        <p data-i18n="cat4_p">Robuste Gusseisenroste für Gas- und Elektroherde</p>
         <span class="cat-count">GRB / GRL / GRV</span>
       </div>
     </a>
 
     <a href="catalog.html?cat=switches" class="category-card fade-up">
-      <div class="category-img">
-        <img src="assets/images/Rotary_Switch_1_nobg.png" alt="Schalter und Regler" loading="lazy" />
-      </div>
+      <div class="category-img"><img src="assets/images/Rotary_Switch_1_nobg.png" alt="Switches & Regulators" loading="lazy" /></div>
       <div class="category-body">
-        <h3>Schalter &amp; Regler</h3>
-        <p>Drehregler und Leistungsschalter für Herdsteuerungen</p>
+        <h3 data-i18n="cat5_h">Schalter &amp; Regler</h3>
+        <p data-i18n="cat5_p">Drehregler und Leistungsschalter für Herdsteuerungen</p>
         <span class="cat-count">SWR / SWP</span>
       </div>
     </a>
 
     <a href="catalog.html?cat=timers" class="category-card fade-up">
-      <div class="category-img">
-        <img src="assets/images/Mechanical Timer_nobg.png" alt="Zeitschalter" loading="lazy" />
-      </div>
+      <div class="category-img"><img src="assets/images/Mechanical Timer_nobg.png" alt="Timers" loading="lazy" /></div>
       <div class="category-body">
-        <h3>Zeitschalter &amp; Uhren</h3>
-        <p>Mechanische und digitale Timer für Backöfen</p>
+        <h3 data-i18n="cat6_h">Zeitschalter &amp; Uhren</h3>
+        <p data-i18n="cat6_p">Mechanische und digitale Timer für Backöfen</p>
         <span class="cat-count">TMA / TMD / TMT</span>
       </div>
     </a>
 
     <a href="catalog.html?cat=fans" class="category-card fade-up">
-      <div class="category-img">
-        <img src="assets/images/Tangential Fan_nobg.png" alt="Ventilatoren und Motoren" loading="lazy" />
-      </div>
+      <div class="category-img"><img src="assets/images/Tangential Fan_nobg.png" alt="Fans & Motors" loading="lazy" /></div>
       <div class="category-body">
-        <h3>Ventilatoren &amp; Motoren</h3>
-        <p>Axial-, Tangentiallüfter und Grillmotoren für Umluftbacköfen</p>
+        <h3 data-i18n="cat7_h">Ventilatoren &amp; Motoren</h3>
+        <p data-i18n="cat7_p">Axial-, Tangentiallüfter und Grillmotoren für Umluftbacköfen</p>
         <span class="cat-count">FNA / FNT / FNM</span>
       </div>
     </a>
 
     <a href="catalog.html?cat=grill" class="category-card fade-up">
-      <div class="category-img">
-        <img src="assets/images/GrillGrid_1_nobg.png" alt="Grillroste und Backofenroste" loading="lazy" />
-      </div>
+      <div class="category-img"><img src="assets/images/GrillGrid_1_nobg.png" alt="Grill & Oven Racks" loading="lazy" /></div>
       <div class="category-body">
-        <h3>Grillroste &amp; Backofenroste</h3>
-        <p>Grillroste und Einschübe für alle gängigen Backofentypen</p>
+        <h3 data-i18n="cat8_h">Grillroste &amp; Backofenroste</h3>
+        <p data-i18n="cat8_p">Grillroste und Einschübe für alle gängigen Backofentypen</p>
         <span class="cat-count">RKG / RKS</span>
       </div>
     </a>
 
     <a href="catalog.html?cat=rails" class="category-card fade-up">
-      <div class="category-img">
-        <img src="assets/images/Roll_guide_nobg.png" alt="Schienen und Führungen" loading="lazy" />
-      </div>
+      <div class="category-img"><img src="assets/images/Roll_guide_nobg.png" alt="Rails & Guides" loading="lazy" /></div>
       <div class="category-body">
-        <h3>Schienen &amp; Führungen</h3>
-        <p>Standard- und Teleskopauszüge für Backöfen</p>
+        <h3 data-i18n="cat9_h">Schienen &amp; Führungen</h3>
+        <p data-i18n="cat9_p">Standard- und Teleskopauszüge für Backöfen</p>
         <span class="cat-count">RLS / RLT</span>
       </div>
     </a>
 
     <a href="catalog.html?cat=electrical" class="category-card fade-up">
-      <div class="category-img">
-        <img src="assets/images/TerminalBlock_1_nobg.png" alt="Elektrische Komponenten" loading="lazy" />
-      </div>
+      <div class="category-img"><img src="assets/images/TerminalBlock_1_nobg.png" alt="Electrical Components" loading="lazy" /></div>
       <div class="category-body">
-        <h3>Elektrische Komponenten</h3>
-        <p>Klemmenblöcke, Lampen, Wärmeanzeigen und Steckverbinder</p>
+        <h3 data-i18n="cat10_h">Elektrische Komponenten</h3>
+        <p data-i18n="cat10_p">Klemmenblöcke, Lampen, Wärmeanzeigen und Steckverbinder</p>
         <span class="cat-count">ECT / ECL / ECH / ECC</span>
       </div>
     </a>
 
     <a href="catalog.html?cat=grill-motor" class="category-card fade-up">
-      <div class="category-img">
-        <img src="assets/images/GrillMotor_nobg.png" alt="Grillmotor und Bratspieß" loading="lazy" />
-      </div>
+      <div class="category-img"><img src="assets/images/GrillMotor_nobg.png" alt="Grill Motor & Rotisserie" loading="lazy" /></div>
       <div class="category-body">
-        <h3>Grillmotor &amp; Bratspieß</h3>
-        <p>Motoren und Zubehör für Grillsysteme in Backöfen</p>
+        <h3 data-i18n="cat11_h">Grillmotor &amp; Bratspieß</h3>
+        <p data-i18n="cat11_p">Motoren und Zubehör für Grillsysteme in Backöfen</p>
         <span class="cat-count">FNM / RKG</span>
       </div>
     </a>
 
     <a href="catalog.html" class="category-card fade-up" style="border-style:dashed;background:var(--gray-light);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;min-height:220px;">
-      <div style="font-size:2.5rem;margin-bottom:14px;">📋</div>
       <div class="category-body">
-        <h3>Alle Kategorien</h3>
-        <p>Thermostats, Glaskeramikplatten, Zündsysteme, Fettfilter und mehr</p>
-        <span class="cat-count">+ weitere Kategorien</span>
+        <h3 data-i18n="cat12_h">Alle Kategorien</h3>
+        <p data-i18n="cat12_p">Thermostats, Glaskeramikplatten, Zündsysteme, Fettfilter und mehr</p>
+        <span class="cat-count">+ 5</span>
       </div>
     </a>
 
   </div>
 </section>
 
-<!-- ===== WHY US ===== -->
 <section class="why-us" id="why">
   <div class="section-header">
-    <span class="section-tag" style="color:rgba(255,130,80,.9)">Unsere Stärken</span>
-    <h2>Warum Elgasco GmbH?</h2>
-    <p style="color:rgba(255,255,255,.55)">Wir sind mehr als ein Lieferant – wir sind ein langfristiger Partner für die Haushaltsgeräteindustrie.</p>
+    <span class="section-tag" style="color:rgba(255,130,80,.9)" data-i18n="why_tag">Unsere Stärken</span>
+    <h2 data-i18n="why_h2">Warum Elgasco GmbH?</h2>
+    <p style="color:rgba(255,255,255,.55)" data-i18n="why_p">Wir sind mehr als ein Lieferant – wir sind ein langfristiger Partner für die Haushaltsgeräteindustrie.</p>
   </div>
   <div class="why-grid">
     <div class="why-card fade-up">
-      <h3>25 Jahre Branchenerfahrung</h3>
-      <p>Gegründet 1999, kennen wir die Anforderungen der Haushaltsgeräteindustrie wie kein anderer.</p>
+      <h3 data-i18n="why1_h">25 Jahre Branchenerfahrung</h3>
+      <p data-i18n="why1_p">Gegründet 1999, kennen wir die Anforderungen der Haushaltsgeräteindustrie wie kein anderer.</p>
     </div>
     <div class="why-card fade-up">
-      <h3>Spezialisiertes Netzwerk</h3>
-      <p>Direkte Partnerschaften mit führenden Produktionsunternehmen weltweit.</p>
+      <h3 data-i18n="why2_h">Spezialisiertes Netzwerk</h3>
+      <p data-i18n="why2_p">Direkte Partnerschaften mit führenden Produktionsunternehmen weltweit.</p>
     </div>
     <div class="why-card fade-up">
-      <h3>Industrielle Stückzahlen</h3>
-      <p>Wir liefern in der für die Serienproduktion erforderlichen Menge – zuverlässig und termintreu.</p>
+      <h3 data-i18n="why3_h">Industrielle Stückzahlen</h3>
+      <p data-i18n="why3_p">Wir liefern in der für die Serienproduktion erforderlichen Menge – zuverlässig und termintreu.</p>
     </div>
     <div class="why-card fade-up">
-      <h3>Breites Produktportfolio</h3>
-      <p>16 Kategorien, über 500 Artikel – Kochfelder, Heizelemente, Regler, Roste, Ventilatoren und mehr.</p>
+      <h3 data-i18n="why4_h">Breites Produktportfolio</h3>
+      <p data-i18n="why4_p">16 Kategorien, über 500 Artikel – Kochfelder, Heizelemente, Regler, Roste, Ventilatoren und mehr.</p>
     </div>
     <div class="why-card fade-up">
-      <h3>Qualitätssicherung</h3>
-      <p>Jedes Produkt entspricht den technischen Spezifikationen unserer Kunden. Präzise Teilenummern garantieren Kompatibilität.</p>
+      <h3 data-i18n="why5_h">Qualitätssicherung</h3>
+      <p data-i18n="why5_p">Jedes Produkt entspricht den technischen Spezifikationen unserer Kunden. Präzise Teilenummern garantieren Kompatibilität.</p>
     </div>
     <div class="why-card fade-up">
-      <h3>Persönliche Betreuung</h3>
-      <p>Direkte Ansprechpartner, schnelle Reaktionszeiten und individuelle Lösungen für Ihre Anforderungen.</p>
+      <h3 data-i18n="why6_h">Persönliche Betreuung</h3>
+      <p data-i18n="why6_p">Direkte Ansprechpartner, schnelle Reaktionszeiten und individuelle Lösungen für Ihre Anforderungen.</p>
     </div>
   </div>
 </section>
 
-<!-- ===== ABOUT ===== -->
 <section class="about" id="about">
   <div class="about-grid">
     <div class="about-content">
-      <span class="section-tag">Über uns</span>
-      <h2>25 Jahre. Weltweite Kunden. Ein Versprechen: Es funktioniert.</h2>
-      <p>Elgasco GmbH beliefert seit 1999 Produzenten weißer Haushaltsgeräte weltweit – mit Komponenten, auf die sich Serienfertigung verlassen kann. Was als regionale Zusammenarbeit begann, ist heute ein globales Netzwerk aus langjährigen Partnerschaften gewachsen.</p>
-      <p>Viele unserer Lieferanten sind keine Zulieferer im klassischen Sinne – sie sind Partner, die mit uns über die Jahre gewachsen sind. Dieses gemeinsame Wachstum bedeutet: kurze Kommunikationswege, tiefes gegenseitiges Verständnis und eine Qualität, die sich über Jahrzehnte bewährt hat.</p>
+      <span class="section-tag" data-i18n="about_tag">Über uns</span>
+      <h2 data-i18n="about_h2">25 Jahre. Weltweite Kunden. Ein Versprechen: Es funktioniert.</h2>
+      <p data-i18n="about_p1">Elgasco GmbH beliefert seit 1999 Produzenten weißer Haushaltsgeräte weltweit – mit Komponenten, auf die sich Serienfertigung verlassen kann.</p>
+      <p data-i18n="about_p2">Viele unserer Lieferanten sind keine Zulieferer im klassischen Sinne – sie sind Partner, die mit uns über die Jahre gewachsen sind.</p>
       <div class="about-strengths">
         <div class="about-strength-item">
-          <div>
-            <h4>Ausschussrate unter 1 %</h4>
-            <p>Bestätigte Qualität – nachgewiesen durch jahrelange Serienlieferungen direkt an Endkunden. Nicht versprochen, sondern dokumentiert.</p>
-          </div>
+          <div><h4 data-i18n="str1_h">Ausschussrate unter 1 %</h4><p data-i18n="str1_p">Bestätigte Qualität – nachgewiesen durch jahrelange Serienlieferungen direkt an Endkunden. Nicht versprochen, sondern dokumentiert.</p></div>
         </div>
         <div class="about-strength-item">
-          <div>
-            <h4>Lieferketten, die standhalten</h4>
-            <p>Auch in Krisenzeiten – Corona, Lieferengpässe, veränderte Marktbedingungen – haben unsere Versorgungsketten funktioniert. Und tun es weiterhin.</p>
-          </div>
+          <div><h4 data-i18n="str2_h">Lieferketten, die standhalten</h4><p data-i18n="str2_p">Auch in Krisenzeiten – Corona, Lieferengpässe, veränderte Marktbedingungen – haben unsere Versorgungsketten funktioniert. Und tun es weiterhin.</p></div>
         </div>
         <div class="about-strength-item">
-          <div>
-            <h4>Kundenspezifische Anforderungen</h4>
-            <p>Sondermaße, abweichende Spezifikationen, kritische Toleranzen – wir arbeiten so lange daran, bis es zu 100 % passt. Kein Kompromiss.</p>
-          </div>
+          <div><h4 data-i18n="str3_h">Kundenspezifische Anforderungen</h4><p data-i18n="str3_p">Sondermaße, abweichende Spezifikationen, kritische Toleranzen – wir arbeiten so lange daran, bis es zu 100 % passt. Kein Kompromiss.</p></div>
         </div>
         <div class="about-strength-item">
-          <div>
-            <h4>Wenn wir es nicht haben, besorgen wir es</h4>
-            <p>Unser Netzwerk reicht weiter als unser Katalog. Was Sie brauchen und wir nicht vorrätig haben, finden und beschaffen wir für Sie.</p>
-          </div>
+          <div><h4 data-i18n="str4_h">Wenn wir es nicht haben, besorgen wir es</h4><p data-i18n="str4_p">Unser Netzwerk reicht weiter als unser Katalog. Was Sie brauchen und wir nicht vorrätig haben, finden und beschaffen wir für Sie.</p></div>
         </div>
       </div>
     </div>
     <div class="about-visual">
       <div class="about-img-grid">
-        <div class="about-img-item">
-          <img src="assets/images/CastIronHotplateRapid_nobg.png" alt="Schnellheizkochfeld" loading="lazy" />
-        </div>
-        <div class="about-img-item">
-          <img src="assets/images/Tubular Heating Element 2_nobg.png" alt="Rohrheizkörper" loading="lazy" />
-        </div>
-        <div class="about-img-item">
-          <img src="assets/images/Radiant Heating Element_2_nobg.png" alt="Strahlungsheizelement" loading="lazy" />
-        </div>
+        <div class="about-img-item"><img src="assets/images/CastIronHotplateRapid_nobg.png" alt="Rapid hotplate" loading="lazy" /></div>
+        <div class="about-img-item"><img src="assets/images/Tubular Heating Element 2_nobg.png" alt="Tubular heater" loading="lazy" /></div>
+        <div class="about-img-item"><img src="assets/images/Radiant Heating Element_2_nobg.png" alt="Radiant element" loading="lazy" /></div>
       </div>
       <div class="about-badge-overlay">
         <div class="number">25+</div>
-        <div class="text">Jahre Partnerschaft</div>
+        <div class="text" data-i18n="about_badge">Jahre Partnerschaft</div>
       </div>
     </div>
   </div>
 </section>
 
-
-<!-- ===== CONTACT ===== -->
 <section class="contact" id="contact">
   <div class="section-header">
-    <span class="section-tag">Kontakt</span>
-    <h2>Anfrage stellen</h2>
-    <p>Sie suchen einen zuverlässigen Lieferanten? Kontaktieren Sie uns – wir melden uns binnen 24 Stunden.</p>
+    <span class="section-tag" data-i18n="contact_tag">Kontakt</span>
+    <h2 data-i18n="contact_h2">Anfrage stellen</h2>
+    <p data-i18n="contact_p">Sie suchen einen zuverlässigen Lieferanten? Kontaktieren Sie uns – wir melden uns binnen 24 Stunden.</p>
   </div>
   <div class="contact-grid">
     <div class="contact-info">
-      <h3>Sprechen Sie uns an</h3>
-      <p>Ob Einzel- oder Serienanfrage: Wir stehen Ihnen für alle Fragen zu unserem Produktportfolio zur Verfügung.</p>
+      <h3 data-i18n="contact_speak">Sprechen Sie uns an</h3>
+      <p data-i18n="contact_speak_p">Ob Einzel- oder Serienanfrage: Wir stehen Ihnen für alle Fragen zu unserem Produktportfolio zur Verfügung.</p>
       <div class="contact-items">
         <div class="contact-item">
-          <div class="contact-item-icon">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-          </div>
+          <div class="contact-item-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
           <div class="contact-item-body">
-            <p>Adresse</p>
-            <p>Elgasco GmbH, Deutschland</p>
+            <p data-i18n="contact_addr_label">Adresse</p>
+            <p data-i18n="contact_addr_val">Elgasco GmbH, Deutschland</p>
           </div>
         </div>
         <div class="contact-item">
-          <div class="contact-item-icon">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-          </div>
+          <div class="contact-item-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
           <div class="contact-item-body">
-            <p>E-Mail</p>
+            <p data-i18n="contact_email_label">E-Mail</p>
             <p>info@elgasco.de</p>
           </div>
         </div>
         <div class="contact-item">
-          <div class="contact-item-icon">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
-          </div>
+          <div class="contact-item-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg></div>
           <div class="contact-item-body">
-            <p>Website</p>
+            <p data-i18n="contact_web_label">Website</p>
             <p>www.elgasco.de</p>
           </div>
         </div>
       </div>
     </div>
-
     <div class="contact-form">
       <form id="contactForm" onsubmit="handleSubmit(event)">
         <div class="form-row">
           <div class="form-group">
-            <label for="name">Name *</label>
-            <input type="text" id="name" name="name" placeholder="Ihr Name" required />
+            <label for="name" data-i18n="form_name">Name *</label>
+            <input type="text" id="name" name="name" data-i18n-ph="form_placeholder_name" placeholder="Ihr Name" required />
           </div>
           <div class="form-group">
-            <label for="company">Unternehmen</label>
-            <input type="text" id="company" name="company" placeholder="Ihr Unternehmen" />
+            <label for="company" data-i18n="form_company">Unternehmen</label>
+            <input type="text" id="company" name="company" data-i18n-ph="form_placeholder_company" placeholder="Ihr Unternehmen" />
           </div>
         </div>
         <div class="form-group">
-          <label for="email">E-Mail *</label>
-          <input type="email" id="email" name="email" placeholder="ihre@email.com" required />
+          <label for="email" data-i18n="form_email">E-Mail *</label>
+          <input type="email" id="email" name="email" data-i18n-ph="form_placeholder_email" placeholder="ihre@email.com" required />
         </div>
         <div class="form-group">
-          <label for="subject">Betreff</label>
+          <label for="subject" data-i18n="form_subject">Betreff</label>
           <select id="subject" name="subject">
-            <option value="">Bitte wählen...</option>
-            <option>Produktanfrage</option>
-            <option>Katalog anfordern</option>
-            <option>Partnerschaft</option>
-            <option>Sonstiges</option>
+            <option value="" data-i18n="form_subject_opt0">Bitte wählen...</option>
+            <option data-i18n="form_subject_opt1">Produktanfrage</option>
+            <option data-i18n="form_subject_opt2">Katalog anfordern</option>
+            <option data-i18n="form_subject_opt3">Partnerschaft</option>
+            <option data-i18n="form_subject_opt4">Sonstiges</option>
           </select>
         </div>
         <div class="form-group">
-          <label for="message">Nachricht *</label>
-          <textarea id="message" name="message" placeholder="Beschreiben Sie Ihren Bedarf..." required></textarea>
+          <label for="message" data-i18n="form_message">Nachricht *</label>
+          <textarea id="message" name="message" data-i18n-ph="form_placeholder_msg" placeholder="Beschreiben Sie Ihren Bedarf..." required></textarea>
         </div>
         <button type="submit" class="btn btn-primary form-submit">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
-          Anfrage senden
+          <span data-i18n="form_submit">Anfrage senden</span>
         </button>
       </form>
     </div>
   </div>
 </section>
 
-<!-- ===== FOOTER ===== -->
 <footer>
   <div class="footer-grid">
     <div class="footer-brand">
@@ -427,49 +361,51 @@
         <img src="assets/images/logo.svg" alt="Elgasco GmbH" />
         <span style="color:white;font-weight:800;font-size:1.1rem;">Elgasco GmbH</span>
       </div>
-      <p>Seit 1999 Ihr zuverlässiger Partner für Haushaltsgeräte-Komponenten. Qualität, Zuverlässigkeit und 25 Jahre Erfahrung.</p>
+      <p data-i18n="footer_p">Seit 1999 Ihr zuverlässiger Partner für Haushaltsgeräte-Komponenten.</p>
     </div>
     <div class="footer-col">
-      <h4>Produkte</h4>
+      <h4 data-i18n="footer_products">Produkte</h4>
       <ul>
-        <li><a href="catalog.html?cat=burners">Kochfelder</a></li>
-        <li><a href="catalog.html?cat=ten">Heizelemente</a></li>
-        <li><a href="catalog.html?cat=grates">Gusseisenroste</a></li>
-        <li><a href="catalog.html?cat=switches">Schalter & Regler</a></li>
-        <li><a href="catalog.html?cat=fans">Ventilatoren</a></li>
-        <li><a href="catalog.html">Alle Kategorien</a></li>
+        <li><a href="catalog.html?cat=burners" data-i18n="cat1_h">Gusseisen-Kochfelder</a></li>
+        <li><a href="catalog.html?cat=ten" data-i18n="cat2_h">Rohrheizkörper (TEN)</a></li>
+        <li><a href="catalog.html?cat=grates" data-i18n="cat4_h">Gusseisenroste</a></li>
+        <li><a href="catalog.html?cat=fans" data-i18n="cat7_h">Ventilatoren &amp; Motoren</a></li>
+        <li><a href="catalog.html" data-i18n="footer_full_cat">Vollkatalog</a></li>
       </ul>
     </div>
     <div class="footer-col">
-      <h4>Unternehmen</h4>
+      <h4 data-i18n="footer_company">Unternehmen</h4>
       <ul>
-        <li><a href="#about">Über uns</a></li>
-        <li><a href="#why">Unsere Stärken</a></li>
-        <li><a href="#contact">Kontakt</a></li>
-        <li><a href="catalog.html">Katalog</a></li>
+        <li><a href="#about" data-i18n="nav_about">Über uns</a></li>
+        <li><a href="#contact" data-i18n="nav_contact">Kontakt</a></li>
+        <li><a href="catalog.html" data-i18n="nav_catalog">Katalog</a></li>
       </ul>
     </div>
     <div class="footer-col">
-      <h4>Kontakt</h4>
+      <h4 data-i18n="nav_contact">Kontakt</h4>
       <ul>
         <li><a href="mailto:info@elgasco.de">info@elgasco.de</a></li>
       </ul>
     </div>
   </div>
   <div class="footer-bottom">
-    <span>© 2024 Elgasco GmbH. Alle Rechte vorbehalten.</span>
-    <span><a href="impressum.html" style="color:inherit;">Impressum</a> · <a href="datenschutz.html" style="color:inherit;">Datenschutz</a></span>
+    <span data-i18n="footer_copy">© 2024 Elgasco GmbH. Alle Rechte vorbehalten.</span>
+    <span>
+      <a href="impressum.html" style="color:inherit;" data-i18n="footer_imprint">Impressum</a> ·
+      <a href="datenschutz.html" style="color:inherit;" data-i18n="footer_privacy">Datenschutz</a>
+    </span>
   </div>
 </footer>
 
+<script src="assets/js/i18n.js"></script>
 <script src="assets/js/main.js"></script>
 <script>
 function handleSubmit(e) {
   e.preventDefault();
   const btn = e.target.querySelector('[type=submit]');
-  btn.textContent = '✓ Nachricht gesendet!';
+  const span = btn.querySelector('span');
+  if (span) span.textContent = t('form_sent');
   btn.style.background = '#27ae60';
-  setTimeout(() => { btn.innerHTML = '&#x2713; Gesendet'; }, 2000);
 }
 </script>
 </body>

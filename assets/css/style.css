@@ -77,6 +77,14 @@ ul { list-style: none; }
 }
 .nav-links a.btn-primary:hover { background: var(--orange-light); transform: translateY(-1px); }
 
+.lang-btn {
+  background: transparent; border: 1.5px solid rgba(255,255,255,.35);
+  color: rgba(255,255,255,.8); font-size: .8rem; font-weight: 700;
+  padding: 5px 12px; border-radius: 6px; cursor: pointer;
+  transition: var(--transition); letter-spacing: .06em; font-family: var(--font);
+}
+.lang-btn:hover { background: rgba(255,255,255,.1); color: var(--white); border-color: rgba(255,255,255,.6); }
+
 .nav-toggle { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
 .nav-toggle span { display: block; width: 24px; height: 2px; background: var(--white); transition: var(--transition); border-radius: 2px; }
 
