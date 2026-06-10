@@ -113,6 +113,9 @@ const T = {
     form_placeholder_msg: 'Beschreiben Sie Ihren Bedarf...',
     form_submit: 'Anfrage senden',
     form_sent: '✓ Nachricht gesendet!',
+    form_success_h: 'Nachricht gesendet!',
+    form_success_p: 'Wir melden uns innerhalb von 24 Stunden.',
+    form_error: 'Fehler beim Senden. Bitte versuchen Sie es erneut oder schreiben Sie direkt an info@elgasco.de.',
 
     // FOOTER
     footer_p: 'Seit 1999 Ihr zuverlässiger Partner für Haushaltsgeräte-Komponenten.',
@@ -252,6 +255,9 @@ const T = {
     form_placeholder_msg: 'Describe your requirements...',
     form_submit: 'Send Enquiry',
     form_sent: '✓ Message sent!',
+    form_success_h: 'Message sent!',
+    form_success_p: 'We will get back to you within 24 hours.',
+    form_error: 'Error sending message. Please try again or email us directly at info@elgasco.de.',
 
     footer_p: 'Your reliable partner for household appliance components since 1999.',
     footer_products: 'Products',
