@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Produktkatalog – Elgasco GmbH</title>
+  <meta name="description" content="Vollständiger Produktkatalog der Elgasco GmbH: Kochfelder, Heizelemente, Roste, Schalter, Ventilatoren und mehr für die Haushaltsgeräteindustrie." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <style>
+    /* ===== CATALOG-SPECIFIC STYLES ===== */
+    .no-results {
+      grid-column: 1/-1; text-align: center; padding: 60px 20px;
+      color: var(--gray-text);
+    }
+    .no-results .icon { font-size: 3rem; margin-bottom: 12px; }
+    .no-results p { font-size: 1rem; }
+
+    /* Modal overlay */
+    .modal-overlay {
+      position: fixed; inset: 0; z-index: 2000;
+      background: rgba(13,27,42,.75); backdrop-filter: blur(6px);
+      display: flex; align-items: center; justify-content: center;
+      padding: 20px; opacity: 0; pointer-events: none;
+      transition: opacity .25s ease;
+    }
+    .modal-overlay.open { opacity: 1; pointer-events: all; }
+    .modal {
+      background: var(--white); border-radius: 20px; max-width: 680px; width: 100%;
+      max-height: 90vh; overflow-y: auto;
+      transform: translateY(20px); transition: transform .25s ease;
+      box-shadow: 0 24px 80px rgba(0,0,0,.3);
+    }
+    .modal-overlay.open .modal { transform: none; }
+    .modal-img {
+      height: 280px; background: var(--gray-light);
+      display: flex; align-items: center; justify-content: center;
+      border-radius: 20px 20px 0 0; overflow: hidden;
+    }
+    .modal-img img { max-height: 240px; max-width: 90%; object-fit: contain; }
+    .modal-body { padding: 28px 32px 32px; }
+    .modal-cat { font-size: .75rem; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--orange); margin-bottom: 8px; }
+    .modal-body h2 { font-size: 1.5rem; font-weight: 800; margin-bottom: 14px; }
+    .modal-specs { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 24px; }
+    .spec-item { background: var(--gray-light); border-radius: 10px; padding: 12px 14px; }
+    .spec-label { font-size: .72rem; font-weight: 700; color: var(--gray-text); text-transform: uppercase; letter-spacing: .06em; margin-bottom: 4px; }
+    .spec-value { font-size: .9rem; font-weight: 600; color: var(--navy); }
+    .modal-close {
+      position: absolute; top: 16px; right: 16px;
+      width: 36px; height: 36px; border-radius: 50%;
+      background: rgba(255,255,255,.9); border: none; cursor: pointer;
+      font-size: 1.1rem; display: flex; align-items: center; justify-content: center;
+      box-shadow: var(--shadow); transition: var(--transition); z-index: 10;
+    }
+    .modal-close:hover { background: var(--navy); color: var(--white); }
+    .modal-wrapper { position: relative; }
+    .modal-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+
+    /* Catalog tabs mobile */
+    .cat-tabs {
+      display: none; overflow-x: auto; gap: 8px; padding: 0 5% 20px;
+      -webkit-overflow-scrolling: touch; scrollbar-width: none;
+    }
+    .cat-tabs::-webkit-scrollbar { display: none; }
+    .cat-tab {
+      white-space: nowrap; padding: 8px 16px; border-radius: 50px;
+      background: var(--white); border: 1.5px solid var(--gray-mid);
+      font-size: .83rem; font-weight: 600; cursor: pointer;
+      transition: var(--transition);
+    }
+    .cat-tab.active { background: var(--orange); color: var(--white); border-color: var(--orange); }
+
+    @media (max-width: 768px) {
+      .cat-tabs { display: flex; }
+      .catalog-sidebar { display: none; }
+      .catalog-layout { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+  <a href="index.html" class="nav-logo">
+    <img src="assets/images/logo.svg" alt="Elgasco GmbH Logo" />
+    <span>Elgasco GmbH</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html#categories">Produkte</a></li>
+    <li><a href="catalog.html" class="active">Katalog</a></li>
+    <li><a href="index.html#about">Über uns</a></li>
+    <li><a href="index.html#contact" class="btn-primary">Kontakt</a></li>
+  </ul>
+  <button class="nav-toggle" aria-label="Menü öffnen">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- HERO -->
+<div class="catalog-hero">
+  <div class="hero-badge" style="display:inline-flex;margin-bottom:20px;">
+    500+ Artikel · 16 Kategorien
+  </div>
+  <h1>Produktkatalog</h1>
+  <p>Alle Komponenten für die Haushaltsgeräteproduktion – durchsuchbar, filterbar, direkt anfragbar.</p>
+</div>
+
+<!-- Mobile category tabs -->
+<div class="cat-tabs" id="catTabs"></div>
+
+<!-- CATALOG LAYOUT -->
+<div class="catalog-section">
+  <div class="catalog-layout">
+
+    <!-- Sidebar -->
+    <aside class="catalog-sidebar">
+      <div class="sidebar-title">Kategorien</div>
+      <div class="sidebar-filter" id="sidebarFilter"></div>
+    </aside>
+
+    <!-- Main content -->
+    <div>
+      <div class="catalog-search">
+        <input type="text" id="searchInput" placeholder="Suche nach Produkt, Teilenummer oder Beschreibung..." />
+        <button onclick="clearSearch()">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          Suchen
+        </button>
+      </div>
+
+      <div class="results-meta">
+        <div class="results-count" id="resultsCount">Alle <strong>0</strong> Produkte</div>
+      </div>
+
+      <div class="products-grid" id="productsGrid"></div>
+    </div>
+  </div>
+</div>
+
+<!-- PRODUCT MODAL -->
+<div class="modal-overlay" id="modalOverlay" onclick="closeModal(event)">
+  <div class="modal-wrapper">
+    <button class="modal-close" onclick="closeModalBtn()">✕</button>
+    <div class="modal" id="modal">
+      <div class="modal-img" id="modalImg"></div>
+      <div class="modal-body">
+        <div class="modal-cat" id="modalCat"></div>
+        <h2 id="modalTitle"></h2>
+        <div class="modal-specs" id="modalSpecs"></div>
+        <div class="modal-actions">
+          <a href="index.html#contact" class="btn btn-primary">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+            Anfrage für dieses Produkt
+          </a>
+          <button class="btn btn-outline" style="color:var(--navy);border-color:var(--gray-mid);" onclick="closeModalBtn()">Schließen</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="footer-logo">
+        <img src="assets/images/logo.svg" alt="Elgasco GmbH" />
+        <span style="color:white;font-weight:800;font-size:1.1rem;">Elgasco GmbH</span>
+      </div>
+      <p>Seit 1999 Ihr zuverlässiger Partner für Haushaltsgeräte-Komponenten.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Produkte</h4>
+      <ul>
+        <li><a href="index.html#categories">Alle Kategorien</a></li>
+        <li><a href="catalog.html">Vollkatalog</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Unternehmen</h4>
+      <ul>
+        <li><a href="index.html#about">Über uns</a></li>
+        <li><a href="index.html#contact">Kontakt</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Kontakt</h4>
+      <ul>
+        <li><a href="mailto:info@elgasco.de">info@elgasco.de</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2024 Elgasco GmbH</span>
+    <span><a href="impressum.html" style="color:inherit;">Impressum</a> · <a href="datenschutz.html" style="color:inherit;">Datenschutz</a></span>
+  </div>
+</footer>
+
+<script src="assets/js/main.js"></script>
+<script>
+// =============================================
+// PRODUCT DATA – extracted from Product_Catalog_Final.xlsx
+// =============================================
+const CATEGORIES = [
+  { id: 'all', label: 'Alle Produkte' },
+  { id: 'burners', label: 'Gusseisen-Kochfelder', prefix: 'CBS/CBR' },
+  { id: 'ceramic', label: 'Keramik-Heizelemente', prefix: 'CKH/CKG' },
+  { id: 'oven-heaters', label: 'Backofen-Heizmodule', prefix: 'OH3/OH5/OHB' },
+  { id: 'ten', label: 'Rohrheizkörper (TEN)', prefix: 'THK/THL/THP/THS' },
+  { id: 'grates', label: 'Gusseisenroste', prefix: 'GRB/GRL/GRV' },
+  { id: 'oven-racks', label: 'Backofenroste & Grillroste', prefix: 'RKG/RKS' },
+  { id: 'switches', label: 'Schalter & Regler', prefix: 'SWR/SWP' },
+  { id: 'thermostats', label: 'Thermostate', prefix: 'TSC/TSS' },
+  { id: 'timers', label: 'Zeitschalter & Uhren', prefix: 'TMA/TMD/TMT' },
+  { id: 'ignition', label: 'Zündsysteme', prefix: 'IGB/IGS' },
+  { id: 'fans', label: 'Ventilatoren & Motoren', prefix: 'FNA/FNT/FNM' },
+  { id: 'rails', label: 'Schienen & Führungen', prefix: 'RLS/RLT' },
+  { id: 'electrical', label: 'Elektrische Komponenten', prefix: 'ECT/ECL/ECH/ECC' },
+  { id: 'glass-ceramic', label: 'Glaskeramikplatten', prefix: 'GCP' },
+  { id: 'filters', label: 'Fettfilter', prefix: 'FLM' },
+];
+
+const PRODUCTS = [
+  // === CAST IRON BURNERS ===
+  { id: 1, cat: 'burners', name: 'Gusseisen-Kochfeld Standard', partNo: 'ELG-CBS-001', mfrPart: 'ЭКЧ-145-1.0/220', power: '1000 W', voltage: '220 V', packQty: 20, desc: 'Standard-Gusseisenkochfeld, Ø 145 mm', img: 'CastIronHotplate_nobg.png' },
+  { id: 2, cat: 'burners', name: 'Gusseisen-Kochfeld Rapid', partNo: 'ELG-CBR-001', mfrPart: 'ЭКЧ-145-1.5/220', power: '1500 W', voltage: '220 V', packQty: 20, desc: 'Schnellheizkochfeld mit erhöhter Leistung, Ø 145 mm', img: 'CastIronHotplateRapid_nobg.png' },
+  { id: 3, cat: 'burners', name: 'Gusseisen-Kochfeld Ø 180 mm', partNo: 'ELG-CBS-002', mfrPart: 'ЭКЧ-180-1.5/220', power: '1500 W', voltage: '220 V', packQty: 18, desc: 'Großes Gusseisenkochfeld für die obere Heizzone', img: 'CastIronHotplate_nobg.png' },
+  { id: 4, cat: 'burners', name: 'Rapid-Kochfeld 2000 W', partNo: 'ELG-CBR-002', mfrPart: 'ЭКЧ-180-2.0/220', power: '2000 W', voltage: '220 V', packQty: 15, desc: 'Hochleistungs-Schnellheizkochfeld Ø 180 mm', img: 'CastIronHotplateRapid_nobg.png' },
+
+  // === CERAMIC / RADIANT HEATERS ===
+  { id: 5, cat: 'ceramic', name: 'Strahlungsheizelement 1200 W', partNo: 'ELG-CKH-001', mfrPart: 'HL-145-1.2/230', power: '1200 W', voltage: '230 V', packQty: 30, desc: 'Glaskeramik-Strahlungsheizelement für HL-Serie', img: 'Radiant Heating Element_1_nobg.png' },
+  { id: 6, cat: 'ceramic', name: 'Strahlungsheizelement 1800 W', partNo: 'ELG-CKH-002', mfrPart: 'HL-180-1.8/230', power: '1800 W', voltage: '230 V', packQty: 25, desc: 'Großes Glaskeramik-Heizelement Ø 180 mm', img: 'Radiant Heating Element_2_nobg.png' },
+  { id: 7, cat: 'ceramic', name: 'Keramikheizelement KEC', partNo: 'ELG-CKG-001', mfrPart: 'KEC-145-1.2/230', power: '1200 W', voltage: '230 V', packQty: 28, desc: 'Glaskeramikheizelement für KEC-Kochfelder', img: 'Radiant Heating Element_1_nobg.png' },
+
+  // === OVEN HEATERS ===
+  { id: 8, cat: 'oven-heaters', name: 'Heizmodul EM341 Unterhitze 1200 W', partNo: 'ELG-OH3-001', mfrPart: 'EM341.111.000', power: '1200 W', voltage: '220 V', packQty: 24, desc: 'Unterer Heizkreis für EM341-Backöfen', img: 'Tubular Heating Element 1_nobg.png' },
+  { id: 9, cat: 'oven-heaters', name: 'Heizmodul EM341 Oberhitze 800 W', partNo: 'ELG-OH3-002', mfrPart: 'EM341.111.001', power: '800 W', voltage: '220 V', packQty: 24, desc: 'Oberer Heizkreis für EM341-Backöfen', img: 'Tubular Heating Element 2_nobg.png' },
+  { id: 10, cat: 'oven-heaters', name: 'Heizmodul EM521 1800 W', partNo: 'ELG-OH5-001', mfrPart: 'EM521.020.000', power: '1800 W', voltage: '220 V', packQty: 20, desc: 'Hauptheizkörper für EM521 Backofen-Serie', img: 'Tubular Heating Element 3_nobg.png' },
+
+  // === TUBULAR HEATING ELEMENTS (TEN) ===
+  { id: 11, cat: 'ten', name: 'TEN Rohrheizkörper 700 W', partNo: 'ELG-THS-001', mfrPart: 'TEN-112-9-7.4/0.8', power: '700 W', voltage: '230 V', packQty: 28, desc: 'Standard-Rohrheizkörper für Elektrobacköfen', img: 'Tubular Heating Element 1_nobg.png' },
+  { id: 12, cat: 'ten', name: 'TEN Rohrheizkörper 900 W', partNo: 'ELG-THS-002', mfrPart: 'TEN-130-9-7.4/1.0', power: '900 W', voltage: '230 V', packQty: 28, desc: 'Mittlerer Rohrheizkörper für Standardbacköfen', img: 'Tubular Heating Element 2_nobg.png' },
+  { id: 13, cat: 'ten', name: 'TEN Rohrheizkörper 1200 W', partNo: 'ELG-THS-003', mfrPart: 'TEN-146-9-7.4/1.2', power: '1200 W', voltage: '230 V', packQty: 32, desc: 'Leistungs-Rohrheizkörper für Einbaubacköfen', img: 'Tubular Heating Element 3_nobg.png' },
+  { id: 14, cat: 'ten', name: 'TEN Rohrheizkörper 1400 W', partNo: 'ELG-THS-004', mfrPart: 'TEN-155-9-8.5/1.40', power: '1400 W', voltage: '230 V', packQty: 32, desc: 'Hochleistungs-Rohrheizkörper', img: 'Tubular Heating Element 4_nobg.png' },
+  { id: 15, cat: 'ten', name: 'BTUC Oberheizkörper 800 W', partNo: 'ELG-THP-001', mfrPart: 'BTUC.681819.026.1', power: '800 W', voltage: '220 V', packQty: 30, desc: 'Oberer Heizkörper P2 für BTUC-Backöfen', img: 'Tubular Heating Element 1_nobg.png' },
+  { id: 16, cat: 'ten', name: 'BTUC Zwillingsheizkörper 1800+800 W', partNo: 'ELG-THP-003', mfrPart: 'BTUC.681819.025.1', power: '2600 W', voltage: '220 V', packQty: 30, desc: 'Kombinierten Oberheizkörper P4 für BTUC-Serie', img: 'Tubular Heating Element 2_nobg.png' },
+  { id: 17, cat: 'ten', name: 'WB-EKHT Heizkörper 2000 W', partNo: 'ELG-THL-007', mfrPart: 'WB-EKHT-003-A', power: '2000 W', voltage: '230 V', packQty: 36, desc: 'Unterer Heizkörper für WB-Backofen-Serie', img: 'Tubular Heating Element 3_nobg.png' },
+
+  // === CAST IRON GRATES ===
+  { id: 18, cat: 'grates', name: 'Gusseisenrost BGM-Serie', partNo: 'ELG-GRB-001', mfrPart: 'BGM-263/450', power: '—', voltage: '—', packQty: 10, desc: 'Gusseisenkochrostrost für BGM/BGC-Gasherde', img: 'Cast Iron Grid_1_nobg.png' },
+  { id: 19, cat: 'grates', name: 'Gusseisenrost LZBT', partNo: 'ELG-GRL-001', mfrPart: 'LZBT-263/490', power: '—', voltage: '—', packQty: 8, desc: 'Gusseisengitterrost für LZBT-Gasherde', img: 'Cast Iron Grid_2_nobg.png' },
+  { id: 20, cat: 'grates', name: 'Gusseisenrost VKKG', partNo: 'ELG-GRV-001', mfrPart: 'VKKG-495/440', power: '—', voltage: '—', packQty: 6, desc: 'Schwerer Gusseisenrost für VKKG-Herde', img: 'Cast Iron Grid_3_nobg.png' },
+
+  // === OVEN RACKS ===
+  { id: 21, cat: 'oven-racks', name: 'Grillrost für Backofen', partNo: 'ELG-RKG-001', mfrPart: 'GRS-445/360', power: '—', voltage: '—', packQty: 15, desc: 'Verchromter Grillrost für Standardbacköfen', img: 'GrillGrid_1_nobg.png' },
+  { id: 22, cat: 'oven-racks', name: 'Bratspießrost', partNo: 'ELG-RKG-002', mfrPart: 'RKG-445/350', power: '—', voltage: '—', packQty: 12, desc: 'Rosteinschub mit Grillzonen für Backöfen', img: 'GrillGrid_1_nobg.png' },
+
+  // === SWITCHES & REGULATORS ===
+  { id: 23, cat: 'switches', name: 'Drehregler 6-stufig', partNo: 'ELG-SWR-001', mfrPart: 'PRKA-6-2.0/220', power: '2000 W', voltage: '220 V', packQty: 50, desc: '6-stufiger Leistungsregler für Elektroherden', img: 'Rotary_Switch_1_nobg.png' },
+  { id: 24, cat: 'switches', name: 'Drehregler 7-stufig', partNo: 'ELG-SWR-002', mfrPart: 'PRKA-7-2.0/220', power: '2000 W', voltage: '220 V', packQty: 50, desc: '7-stufiger Drehschalter mit Endlosanschlag', img: 'Rotary_Switch_2_nobg.png' },
+  { id: 25, cat: 'switches', name: 'Backofen-Wahlschalter', partNo: 'ELG-SWP-001', mfrPart: 'PKP-4-2.5/250', power: '2500 W', voltage: '250 V', packQty: 40, desc: 'Funktionswahlschalter für Backöfen (Ober/Unterhitze/Grill/Umluft)', img: 'Rotary_Switch_3_nobg.png' },
+
+  // === THERMOSTATS ===
+  { id: 26, cat: 'thermostats', name: 'Kapillar-Thermostat 50–300 °C', partNo: 'ELG-TSC-001', mfrPart: 'TOK-50-300', power: '—', voltage: '250 V', packQty: 40, desc: 'Regelbarer Kapillarthermostat für Backofen-Temperaturregelung', img: 'Rotary_Switch_1_nobg.png' },
+  { id: 27, cat: 'thermostats', name: 'Sicherheitsthermostat 320 °C', partNo: 'ELG-TSS-001', mfrPart: 'TSS-320/250', power: '—', voltage: '250 V', packQty: 60, desc: 'Einweg-Sicherheitsthermostat, nicht rückstellbar', img: 'Rotary_Switch_2_nobg.png' },
+
+  // === TIMERS ===
+  { id: 28, cat: 'timers', name: 'Mechanischer Küchentimer 60 min', partNo: 'ELG-TMA-001', mfrPart: 'MT-60/K', power: '—', voltage: '—', packQty: 30, desc: 'Analoger Mechaniktimer mit Glockensignal, 0–60 Minuten', img: 'Mechanical Timer_nobg.png' },
+  { id: 29, cat: 'timers', name: 'Mechanischer Backofen-Timer 120 min', partNo: 'ELG-TMA-002', mfrPart: 'MT-120/BK', power: '—', voltage: '250 V', packQty: 25, desc: 'Mechanischer Einschalttimer mit Ausschaltkontakt für Backöfen', img: 'Mechanical Timer_nobg.png' },
+
+  // === FANS & MOTORS ===
+  { id: 30, cat: 'fans', name: 'Tangential-Lüftermotor 25 W', partNo: 'ELG-FNT-001', mfrPart: 'TM-25/220-F', power: '25 W', voltage: '220 V', packQty: 20, desc: 'Tangentiallüfter für Kühlluft in Backöfen und Herden', img: 'Tangential Fan_nobg.png' },
+  { id: 31, cat: 'fans', name: 'Grillmotor mit Spieß 4 W', partNo: 'ELG-FNM-001', mfrPart: 'GM-4/220-S', power: '4 W', voltage: '220 V', packQty: 15, desc: 'Synchronmotor für Grillspieß-Rotation im Backofen', img: 'GrillMotor_nobg.png' },
+  { id: 32, cat: 'fans', name: 'Bratspießmotor-Set', partNo: 'ELG-FNM-002', mfrPart: 'RJ-001', power: '6 W', voltage: '220 V', packQty: 10, desc: 'Vollständiges Bratspieß-Motorset mit Halterung', img: 'RostingJack_nobg.png' },
+
+  // === RAILS & GUIDES ===
+  { id: 33, cat: 'rails', name: 'Backofenschiene Standard', partNo: 'ELG-RLS-001', mfrPart: 'SHR-445/S', power: '—', voltage: '—', packQty: 20, desc: 'Seitliche Backofenschiene für 445 mm breite Backöfen', img: 'Slider_nobg.png' },
+  { id: 34, cat: 'rails', name: 'Rollenführung für Backbleche', partNo: 'ELG-RLT-001', mfrPart: 'RG-445/T', power: '—', voltage: '—', packQty: 15, desc: 'Teleskopische Rollenführung mit Sanftauslauf', img: 'Roll_guide_nobg.png' },
+
+  // === ELECTRICAL ===
+  { id: 35, cat: 'electrical', name: 'Klemmenblock 4-polig', partNo: 'ELG-ECT-001', mfrPart: 'KB-4/16A-250', power: '—', voltage: '250 V', packQty: 50, desc: '4-poliger Klemmenblock für Herdanschlüsse, 16 A', img: 'TerminalBlock_1_nobg.png' },
+  { id: 36, cat: 'electrical', name: 'Klemmenblock 6-polig', partNo: 'ELG-ECT-002', mfrPart: 'KB-6/16A-250', power: '—', voltage: '250 V', packQty: 40, desc: '6-poliger Klemmenblock für kombinierte Herdanschlüsse', img: 'TerminalBlock_1_nobg.png' },
+];
+
+// =============================================
+// CATALOG LOGIC
+// =============================================
+let activeCategory = 'all';
+let searchQuery = '';
+
+function init() {
+  // Read URL param
+  const urlParams = new URLSearchParams(window.location.search);
+  const catParam = urlParams.get('cat');
+  if (catParam) activeCategory = catParam;
+
+  renderSidebar();
+  renderMobileTabs();
+  renderProducts();
+
+  document.getElementById('searchInput').addEventListener('input', e => {
+    searchQuery = e.target.value.toLowerCase();
+    renderProducts();
+  });
+}
+
+function renderSidebar() {
+  const container = document.getElementById('sidebarFilter');
+  container.innerHTML = CATEGORIES.map(cat => {
+    const count = cat.id === 'all' ? PRODUCTS.length : PRODUCTS.filter(p => p.cat === cat.id).length;
+    return `<button onclick="setCategory('${cat.id}')" class="${activeCategory === cat.id ? 'active' : ''}" id="btn-${cat.id}">
+      ${cat.label}
+      <span class="count">${count}</span>
+    </button>`;
+  }).join('');
+}
+
+function renderMobileTabs() {
+  const container = document.getElementById('catTabs');
+  container.innerHTML = CATEGORIES.map(cat => `
+    <button class="cat-tab ${activeCategory === cat.id ? 'active' : ''}" onclick="setCategory('${cat.id}')">
+      ${cat.label}
+    </button>
+  `).join('');
+}
+
+function setCategory(catId) {
+  activeCategory = catId;
+  renderSidebar();
+  renderMobileTabs();
+  renderProducts();
+  window.scrollTo({ top: 200, behavior: 'smooth' });
+}
+
+function clearSearch() {
+  document.getElementById('searchInput').value = '';
+  searchQuery = '';
+  renderProducts();
+}
+
+function renderProducts() {
+  let filtered = PRODUCTS;
+
+  if (activeCategory !== 'all') {
+    filtered = filtered.filter(p => p.cat === activeCategory);
+  }
+
+  if (searchQuery) {
+    filtered = filtered.filter(p =>
+      p.name.toLowerCase().includes(searchQuery) ||
+      p.partNo.toLowerCase().includes(searchQuery) ||
+      p.mfrPart.toLowerCase().includes(searchQuery) ||
+      p.desc.toLowerCase().includes(searchQuery)
+    );
+  }
+
+  const grid = document.getElementById('productsGrid');
+  const count = document.getElementById('resultsCount');
+  count.innerHTML = `<strong>${filtered.length}</strong> Produkt${filtered.length !== 1 ? 'e' : ''} gefunden`;
+
+  if (filtered.length === 0) {
+    grid.innerHTML = `<div class="no-results">
+      <p>Keine Produkte gefunden. Bitte ändern Sie Ihre Suche.</p>
+    </div>`;
+    return;
+  }
+
+  grid.innerHTML = filtered.map(p => {
+    const cat = CATEGORIES.find(c => c.id === p.cat);
+    return `<div class="product-card" onclick="openModal(${p.id})">
+      <div class="product-img">
+        <img src="assets/images/${p.img}" alt="${p.name}" loading="lazy"
+             onerror="this.style.display='none'"/>
+      </div>
+      <div class="product-body">
+        <div class="product-cat">${cat ? cat.label : ''}</div>
+        <h4>${p.name}</h4>
+        <p>${p.desc}</p>
+        <div class="product-part">
+          <strong>${p.partNo}</strong><br/>
+          <span style="opacity:.7">${p.mfrPart}</span>
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function openModal(productId) {
+  const p = PRODUCTS.find(x => x.id === productId);
+  if (!p) return;
+  const cat = CATEGORIES.find(c => c.id === p.cat);
+
+  document.getElementById('modalCat').textContent = (cat ? cat.label : '');
+  document.getElementById('modalTitle').textContent = p.name;
+  document.getElementById('modalImg').innerHTML = `<img src="assets/images/${p.img}" alt="${p.name}" onerror="this.parentNode.innerHTML=''"/>`;
+
+  const specs = [
+    { label: 'ELG Teilenr.', value: p.partNo },
+    { label: 'Hersteller-Nr.', value: p.mfrPart },
+    p.power !== '—' ? { label: 'Leistung', value: p.power } : null,
+    p.voltage !== '—' ? { label: 'Spannung', value: p.voltage } : null,
+    p.packQty ? { label: 'VPE', value: p.packQty + ' Stück' } : null,
+  ].filter(Boolean);
+
+  document.getElementById('modalSpecs').innerHTML = specs.map(s =>
+    `<div class="spec-item"><div class="spec-label">${s.label}</div><div class="spec-value">${s.value}</div></div>`
+  ).join('');
+
+  document.getElementById('modalOverlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModal(e) {
+  if (e.target === document.getElementById('modalOverlay')) closeModalBtn();
+}
+function closeModalBtn() {
+  document.getElementById('modalOverlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModalBtn(); });
+
+init();
+</script>
+</body>
+</html>

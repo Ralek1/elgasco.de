@@ -1,0 +1,30 @@
+# Internal business documents – not for public repo
+Hotplates/
+Hotplate_Produktkatalog.xlsx
+WB-UAHP-*.png
+assets/images/Product_Catalog_Final.xlsx
+
+# Python helper scripts (only needed locally)
+fix_imgs.py
+fix_imgs2.py
+fix_catalog_imgs.py
+fix_logo.py
+fix_roll_guide.py
+remove_bg_v2.py
+check_imgs.py
+
+# Local dev config
+.claude/
+
+# Node
+node_modules/
+package-lock.json
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor
+.vscode/
+*.swp
