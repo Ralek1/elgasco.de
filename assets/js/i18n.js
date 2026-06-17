@@ -128,7 +128,7 @@
     footer_about: 'Über uns',
     footer_contact: 'Kontakt',
     footer_legal: 'Rechtliches',
-    footer_copy: '© 2024 Elgasco GmbH. Alle Rechte vorbehalten.',
+    footer_copy: '© 2026 Elgasco GmbH. Alle Rechte vorbehalten.',
     footer_imprint: 'Impressum',
     footer_privacy: 'Datenschutz',
 
@@ -271,7 +271,7 @@
     footer_about: 'About Us',
     footer_contact: 'Contact',
     footer_legal: 'Legal',
-    footer_copy: '© 2024 Elgasco GmbH. All rights reserved.',
+    footer_copy: '© 2026 Elgasco GmbH. All rights reserved.',
     footer_imprint: 'Legal Notice',
     footer_privacy: 'Privacy Policy',
 
