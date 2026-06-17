@@ -74,7 +74,7 @@
 
     // ABOUT
     about_tag: 'Über uns',
-    about_h2: '25 Jahre. Weltweite Kunden. Ein Versprechen: Es funktioniert.',
+    about_h2: '23 Jahre. Weltweite Kunden. Ein Versprechen: Es funktioniert.',
     about_p1: 'Elgasco GmbH beliefert seit 2002 Produzenten weißer Haushaltsgeräte weltweit – mit Komponenten, auf die sich Serienfertigung verlassen kann. Was als regionale Zusammenarbeit begann, ist heute ein globales Netzwerk aus langjährigen Partnerschaften gewachsen.',
     about_p2: 'Viele unserer Lieferanten sind keine Zulieferer im klassischen Sinne – sie sind Partner, die mit uns über die Jahre gewachsen sind. Dieses gemeinsame Wachstum bedeutet: kurze Kommunikationswege, tiefes gegenseitiges Verständnis und eine Qualität, die sich über Jahrzehnte bewährt hat.',
     str1_h: 'Ausschussrate unter 1 %',
@@ -219,7 +219,7 @@
     why6_p: 'Direct contacts, fast response times and individual solutions for your requirements.',
 
     about_tag: 'About Us',
-    about_h2: '25 Years. Global Customers. One Promise: It Works.',
+    about_h2: '23 Years. Global Customers. One Promise: It Works.',
     about_p1: 'Since 2002, Elgasco GmbH has been supplying manufacturers of white goods worldwide with components that serial production can rely on. What began as a regional cooperation has grown into a global network of long-standing partnerships.',
     about_p2: 'Many of our suppliers are not suppliers in the traditional sense – they are partners who have grown with us over the years. This shared growth means: short communication channels, deep mutual understanding, and a quality that has stood the test of decades.',
     str1_h: 'Rejection Rate Below 1%',
