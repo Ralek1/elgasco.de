@@ -1,4 +1,4 @@
-const T = {
+﻿const T = {
   de: {
     // NAV
     nav_products: 'Produkte',
@@ -7,7 +7,7 @@ const T = {
     nav_contact: 'Kontakt',
 
     // HERO
-    hero_badge: 'Seit 1999 · 25 Jahre Erfahrung',
+    hero_badge: 'Seit 2002 · 23 Jahre Erfahrung',
     hero_h1: 'Ihr zuverlässiger Partner für <span>Haushaltsgeräte-Komponenten</span>',
     hero_p: 'Elgasco GmbH beliefert Produktionsunternehmen weltweit mit hochwertigen Komponenten für weiße Haushaltsgeräte – präzise, termintreu und in industrieller Stückzahl.',
     hero_btn_catalog: 'Produktkatalog öffnen',
@@ -60,7 +60,7 @@ const T = {
     why_h2: 'Warum Elgasco GmbH?',
     why_p: 'Wir sind mehr als ein Lieferant – wir sind ein langfristiger Partner für die Haushaltsgeräteindustrie.',
     why1_h: '25 Jahre Branchenerfahrung',
-    why1_p: 'Gegründet 1999, kennen wir die Anforderungen der Haushaltsgeräteindustrie wie kein anderer.',
+    why1_p: 'Gegründet 2002, kennen wir die Anforderungen der Haushaltsgeräteindustrie wie kein anderer.',
     why2_h: 'Spezialisiertes Netzwerk',
     why2_p: 'Direkte Partnerschaften mit führenden Produktionsunternehmen weltweit.',
     why3_h: 'Industrielle Stückzahlen',
@@ -75,7 +75,7 @@ const T = {
     // ABOUT
     about_tag: 'Über uns',
     about_h2: '25 Jahre. Weltweite Kunden. Ein Versprechen: Es funktioniert.',
-    about_p1: 'Elgasco GmbH beliefert seit 1999 Produzenten weißer Haushaltsgeräte weltweit – mit Komponenten, auf die sich Serienfertigung verlassen kann. Was als regionale Zusammenarbeit begann, ist heute ein globales Netzwerk aus langjährigen Partnerschaften gewachsen.',
+    about_p1: 'Elgasco GmbH beliefert seit 2002 Produzenten weißer Haushaltsgeräte weltweit – mit Komponenten, auf die sich Serienfertigung verlassen kann. Was als regionale Zusammenarbeit begann, ist heute ein globales Netzwerk aus langjährigen Partnerschaften gewachsen.',
     about_p2: 'Viele unserer Lieferanten sind keine Zulieferer im klassischen Sinne – sie sind Partner, die mit uns über die Jahre gewachsen sind. Dieses gemeinsame Wachstum bedeutet: kurze Kommunikationswege, tiefes gegenseitiges Verständnis und eine Qualität, die sich über Jahrzehnte bewährt hat.',
     str1_h: 'Ausschussrate unter 1 %',
     str1_p: 'Bestätigte Qualität – nachgewiesen durch jahrelange Serienlieferungen direkt an Endkunden. Nicht versprochen, sondern dokumentiert.',
@@ -120,7 +120,7 @@ const T = {
     form_error: 'Fehler beim Senden. Bitte versuchen Sie es erneut oder schreiben Sie direkt an info@elgasco.de.',
 
     // FOOTER
-    footer_p: 'Seit 1999 Ihr zuverlässiger Partner für Haushaltsgeräte-Komponenten.',
+    footer_p: 'Seit 2002 Ihr zuverlässiger Partner für Haushaltsgeräte-Komponenten.',
     footer_products: 'Produkte',
     footer_all_cats: 'Alle Kategorien',
     footer_full_cat: 'Vollkatalog',
@@ -156,7 +156,7 @@ const T = {
     nav_about: 'About Us',
     nav_contact: 'Contact',
 
-    hero_badge: 'Since 1999 · 25 Years of Experience',
+    hero_badge: 'Since 2002 · 23 Years of Experience',
     hero_h1: 'Your reliable partner for <span>household appliance components</span>',
     hero_p: 'Elgasco GmbH supplies production companies worldwide with high-quality components for white goods – precise, on time, and in industrial quantities.',
     hero_btn_catalog: 'Open Product Catalogue',
@@ -206,7 +206,7 @@ const T = {
     why_h2: 'Why Elgasco GmbH?',
     why_p: 'We are more than a supplier – we are a long-term partner for the household appliance industry.',
     why1_h: '25 Years of Industry Experience',
-    why1_p: 'Founded in 1999, we know the requirements of the household appliance industry like no other.',
+    why1_p: 'Founded in 2002, we know the requirements of the household appliance industry like no other.',
     why2_h: 'Specialised Network',
     why2_p: 'Direct partnerships with leading production companies worldwide.',
     why3_h: 'Industrial Quantities',
@@ -220,7 +220,7 @@ const T = {
 
     about_tag: 'About Us',
     about_h2: '25 Years. Global Customers. One Promise: It Works.',
-    about_p1: 'Since 1999, Elgasco GmbH has been supplying manufacturers of white goods worldwide with components that serial production can rely on. What began as a regional cooperation has grown into a global network of long-standing partnerships.',
+    about_p1: 'Since 2002, Elgasco GmbH has been supplying manufacturers of white goods worldwide with components that serial production can rely on. What began as a regional cooperation has grown into a global network of long-standing partnerships.',
     about_p2: 'Many of our suppliers are not suppliers in the traditional sense – they are partners who have grown with us over the years. This shared growth means: short communication channels, deep mutual understanding, and a quality that has stood the test of decades.',
     str1_h: 'Rejection Rate Below 1%',
     str1_p: 'Confirmed quality – proven through years of series deliveries directly to end customers. Not promised, but documented.',
@@ -263,7 +263,7 @@ const T = {
     form_success_p: 'We will get back to you within 24 hours.',
     form_error: 'Error sending message. Please try again or email us directly at info@elgasco.de.',
 
-    footer_p: 'Your reliable partner for household appliance components since 1999.',
+    footer_p: 'Your reliable partner for household appliance components since 2002.',
     footer_products: 'Products',
     footer_all_cats: 'All Categories',
     footer_full_cat: 'Full Catalogue',
@@ -403,3 +403,4 @@ function toggleLang() {
 }
 
 document.addEventListener('DOMContentLoaded', applyTranslations);
+
